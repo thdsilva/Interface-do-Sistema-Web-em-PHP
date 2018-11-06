@@ -35,7 +35,7 @@
 </html>
 
 <?php
-     session_start();
+     /*session_start();
      include "conexao.php";
 ?>
 <!DOCTYPE HTML>
@@ -72,4 +72,4 @@
                ?>
           </div>
       </body>
-</html>
+</html>*/

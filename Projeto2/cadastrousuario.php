@@ -18,8 +18,8 @@
                     $filtraNome = filter_var($recebeNome,FILTER_SANITIZE_SPECIAL_CHARS);
                     $filtraNome = filter_var($filtraNome, FILTER_SANITIZE_MAGIC_QUOTES);
                     $recebeEmail = $_POST['email'];
-                     $filtraEmail = filter_var($recebeEmail,FILTER_SANITIZE_SPECIAL_CHARS);
-                     $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_MAGIC_QUOTES);
+                    //  $filtraEmail = filter_var($recebeEmail,FILTER_SANITIZE_SPECIAL_CHARS);
+                    //  $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_MAGIC_QUOTES);
                     //FILTER_VALIDATE_EMAIL
                     //$filtraEmail = filter_var($filtraEmail, FILTER_VALIDATE_EMAIL);
                
@@ -30,7 +30,7 @@
                          return md5($criptoSenha);
                     }
                     $criptoSenha = criptoSenha($filtraSenha);
-                    $consultaBanco = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email = '$recebeEmail'") or die (mysql_error());
+                    $consultaBanco = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email = '$recebeEmail'") or die (mysqli_error());
                     $verificaBanco = mysqli_num_rows($consultaBanco);
                     if($verificaBanco == 1){
                          echo "<p>Prezado(a) <strong>$confereSeuNome</strong>, o endereço de e-mail informado (<strong><em>$recebeEmail</em></strong>) já consta em nossa base de dados!</p>";
@@ -38,7 +38,7 @@
                          return false;
                     }
                     else {
-                         $insereDados = mysqli_query($conecta, "INSERT INTO tblusuario (nome, email, senha) VALUES ('$filtraNome', '$rfiltraEmail', '$criptoSenha')") or die (mysql_error());
+                         $insereDados = mysqli_query($conecta, "INSERT INTO tblusuario (nome, email, senha) VALUES ('$filtraNome', '$recebeEmail', '$criptoSenha')") or die (mysqli_error());
                          echo "<p>Seu cadastro foi efetuado com sucesso!</p>";
                     }
                ?>
