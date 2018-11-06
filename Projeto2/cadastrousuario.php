@@ -17,8 +17,11 @@
                     $filtraNome = filter_var($recebeNome,FILTER_SANITIZE_SPECIAL_CHARS);
                     $filtraNome = filter_var($filtraNome, FILTER_SANITIZE_MAGIC_QUOTES);
                     $recebeEmail = $_POST['email'];
-                    $filtraEmail = filter_var($recebeEmail,FILTER_SANITIZE_SPECIAL_CHARS);
-                    $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_MAGIC_QUOTES);
+                    // $filtraEmail = filter_var($recebeEmail,FILTER_SANITIZE_SPECIAL_CHARS);
+                    // $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_MAGIC_QUOTES);
+                    //FILTER_VALIDATE_EMAIL
+                    $filtraEmail = filter_var($filtraEmail, FILTER_VALIDATE_EMAIL);
+               
                     $recebeSenha = $_POST['senha'];
                     $filtraSenha = filter_var($recebeSenha,FILTER_SANITIZE_SPECIAL_CHARS);
                     $filtraSenha = filter_var($filtraSenha, FILTER_SANITIZE_MAGIC_QUOTES);
