@@ -28,7 +28,7 @@
                         if($verificaInformacoes == 1){
                              while ($result=mysqli_fetch_array($verificaInformacoes)){
                                   $_SESSION['login']=true;
-                                  $_SESSION['nome_usuario']=$result['nome_tblusuario'];
+                                  $_SESSION['nome']=$result['nome'];
                                   header("Location: conteudoExclusivo.php");
                              }
                         } else {
