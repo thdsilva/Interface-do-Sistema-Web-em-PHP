@@ -1,5 +1,6 @@
 <?php
      include "conexao.php";
+     //include "cadastro.php";
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -17,10 +18,10 @@
                     $filtraNome = filter_var($recebeNome,FILTER_SANITIZE_SPECIAL_CHARS);
                     $filtraNome = filter_var($filtraNome, FILTER_SANITIZE_MAGIC_QUOTES);
                     $recebeEmail = $_POST['email'];
-                    // $filtraEmail = filter_var($recebeEmail,FILTER_SANITIZE_SPECIAL_CHARS);
-                    // $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_MAGIC_QUOTES);
+                     $filtraEmail = filter_var($recebeEmail,FILTER_SANITIZE_SPECIAL_CHARS);
+                     $filtraEmail = filter_var($filtraEmail, FILTER_SANITIZE_MAGIC_QUOTES);
                     //FILTER_VALIDATE_EMAIL
-                    $filtraEmail = filter_var($filtraEmail, FILTER_VALIDATE_EMAIL);
+                    //$filtraEmail = filter_var($filtraEmail, FILTER_VALIDATE_EMAIL);
                
                     $recebeSenha = $_POST['senha'];
                     $filtraSenha = filter_var($recebeSenha,FILTER_SANITIZE_SPECIAL_CHARS);
@@ -30,7 +31,7 @@
                     }
                     $criptoSenha = criptoSenha($filtraSenha);
                     $consultaBanco = mysqli_query($conecta, "SELECT * FROM tblusuario WHERE email = '$recebeEmail'") or die (mysql_error());
-                    $verificaBanco = mysql_num_rows($consultaBanco);
+                    $verificaBanco = mysqli_num_rows($consultaBanco);
                     if($verificaBanco == 1){
                          echo "<p>Prezado(a) <strong>$confereSeuNome</strong>, o endereço de e-mail informado (<strong><em>$recebeEmail</em></strong>) já consta em nossa base de dados!</p>";
                          echo "<p><a href='javascript:history.back();'>Volte</a> para a página anterior e informe um novo endereço! Obrigado!</p>";
